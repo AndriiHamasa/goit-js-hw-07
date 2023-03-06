@@ -5,18 +5,17 @@ const galleryEl = document.querySelector('.gallery');
 
 galleryEl.innerHTML = galleryItems.map((picture) => `
 <a class="gallery__item" href="${picture.original}">
-  <img class="gallery__image" src="${picture.preview}" alt="${picture.description}" title="${picture.description}"/>
+  <img class="gallery__image" src="${picture.preview}" alt="${picture.description}"/>
 </a>`).join('');
 
 const gallery = new SimpleLightbox('.gallery a');
 
-const handlePictureClick = (event) => {
-    event.preventDefault();
-    if (event.target.nodeName !== 'IMG') {
-        return;
-    }
-    
-    gallery.on('show.simplelightbox', function () {});
-}
+gallery.defaultOptions.captionsData = 'alt';
+gallery.defaultOptions.captionDelay = 250;
 
-galleryEl.addEventListener('click', handlePictureClick);
+
+gallery.on('show.simplelightbox', function () {});
+
+
+
+
